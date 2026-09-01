@@ -4,39 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Carsten Marmulla</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   :root {
-    --paper: #f4f7f7;
-    --surface: #ffffff;
-    --ink: #16222b;
-    --muted: #5a6b74;
-    --accent: #0e7c86;
-    --accent-soft: #d7e9ea;
-    --hairline: #d9e1e3;
-    --placeholder: #8a979e;
+    --paper: #0b1220;
+    --surface: #111b2c;
+    --ink: #e9eef5;
+    --muted: #90a2b5;
+    --accent: #3fc1d1;
+    --hairline: #223049;
+    --placeholder: #6b7c90;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #0f171c;
-      --surface: #16222b;
-      --ink: #e4eaec;
-      --muted: #93a4ad;
-      --accent: #4fb3bc;
-      --accent-soft: #143b3f;
-      --hairline: #263640;
-      --placeholder: #6d7e87;
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --paper: #f3f6fa;
+      --surface: #ffffff;
+      --ink: #101b2a;
+      --muted: #55677c;
+      --accent: #0c7c8c;
+      --hairline: #d8e0ea;
+      --placeholder: #8a98a8;
     }
   }
-  :root[data-theme="dark"] {
-    --paper: #0f171c;
-    --surface: #16222b;
-    --ink: #e4eaec;
-    --muted: #93a4ad;
-    --accent: #4fb3bc;
-    --accent-soft: #143b3f;
-    --hairline: #263640;
-    --placeholder: #6d7e87;
+  :root[data-theme="light"] {
+    --paper: #f3f6fa;
+    --surface: #ffffff;
+    --ink: #101b2a;
+    --muted: #55677c;
+    --accent: #0c7c8c;
+    --hairline: #d8e0ea;
+    --placeholder: #8a98a8;
   }
 
   * { box-sizing: border-box; }
@@ -44,14 +41,14 @@
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    font-family: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
     font-size: 1.0625rem;
     line-height: 1.65;
   }
   .page {
-    max-width: 44rem;
+    max-width: 46rem;
     margin: 0 auto;
-    padding: clamp(2.5rem, 7vw, 5rem) 1.5rem 4rem;
+    padding: 0 1.5rem 4rem;
     display: flex;
     flex-direction: column;
     gap: clamp(2.75rem, 6vw, 4rem);
@@ -64,16 +61,26 @@
     text-transform: uppercase;
   }
 
-  header .eyebrow {
-    color: var(--accent);
-    margin: 0 0 1rem;
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--hairline);
+    color: var(--muted);
   }
+  .topbar .mark { display: flex; align-items: center; gap: 0.6rem; color: var(--accent); }
+  .topbar svg { display: block; }
+
+  header.hero { padding-top: clamp(1.5rem, 5vw, 3rem); }
+  .eyebrow { color: var(--accent); margin: 0 0 1rem; }
   h1 {
-    font-family: "Bricolage Grotesque", "Arial Narrow", sans-serif;
-    font-size: clamp(2.6rem, 7vw, 3.75rem);
+    font-family: "Archivo", "Arial", sans-serif;
+    font-size: clamp(2.6rem, 7vw, 3.9rem);
     font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.015em;
+    line-height: 1.03;
+    letter-spacing: -0.02em;
     margin: 0 0 1.1rem;
     text-wrap: balance;
   }
@@ -94,15 +101,27 @@
   }
 
   section > h2 {
-    font-family: "Bricolage Grotesque", "Arial Narrow", sans-serif;
-    font-size: 1.45rem;
+    font-family: "Archivo", "Arial", sans-serif;
+    font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: -0.01em;
     margin: 0 0 1.25rem;
     padding-bottom: 0.6rem;
     border-bottom: 1px solid var(--hairline);
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
   }
-  section p { margin: 0 0 1rem; max-width: 40rem; }
+  section > h2::before {
+    content: "";
+    flex: none;
+    width: 0.55rem;
+    height: 0.65rem;
+    background: var(--accent);
+    clip-path: polygon(0 0, 100% 0, 100% 55%, 50% 100%, 0 55%);
+    transform: translateY(0.05rem);
+  }
+  section p { margin: 0 0 1rem; max-width: 41rem; }
   section p:last-child { margin-bottom: 0; }
 
   .focus-list {
@@ -118,13 +137,11 @@
     gap: 0.8rem;
   }
   .focus-list li::before {
-    content: "";
+    content: "//";
     flex: none;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 1px;
-    background: var(--accent);
-    transform: translateY(-1px) rotate(45deg);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
   }
 
   .timeline {
@@ -142,11 +159,17 @@
   .timeline .when {
     color: var(--accent);
     font-variant-numeric: tabular-nums;
-    padding-top: 0.3rem;
+    padding-top: 0.55rem;
     border-top: 2px solid var(--accent);
   }
-  .timeline .what { border-top: 2px solid var(--hairline); padding-top: 0.3rem; }
+  .timeline .what {
+    border-top: 1px solid var(--hairline);
+    background: var(--surface);
+    border-radius: 0 0 6px 6px;
+    padding: 0.9rem 1.1rem 1rem;
+  }
   .timeline h3 {
+    font-family: "Archivo", sans-serif;
     font-size: 1.05rem;
     font-weight: 600;
     margin: 0 0 0.25rem;
@@ -182,7 +205,7 @@
     background: var(--surface);
     color: var(--ink);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.95rem;
     transition: border-color 120ms ease, color 120ms ease;
   }
@@ -206,7 +229,17 @@
 <body>
 <div class="page">
 
-  <header>
+  <div class="topbar">
+    <span class="mark" aria-hidden="true">
+      <svg width="34" height="16" viewBox="0 0 34 16" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="9" cy="8" r="6"></circle>
+        <circle cx="25" cy="8" r="6"></circle>
+      </svg>
+    </span>
+    <span class="mono">Trusted Advisor // Cyber Resilience</span>
+  </div>
+
+  <header class="hero">
     <p class="mono eyebrow">Strategic Leadership · Management Advisory · Entrepreneurship</p>
     <h1>Carsten Marmulla</h1>
     <p class="lead">Gründer, strategischer Gesellschafter und Trusted Advisor – verbindet <strong>tiefgreifendes technologisches Verständnis</strong> mit <strong>unternehmerischer Weitsicht</strong>.</p>
@@ -218,14 +251,16 @@
 
   <section>
     <h2>Profil</h2>
-    <p>Carsten Marmulla blickt auf langjährige Erfahrung in Technologie- und Führungsrollen zurück. 2018 gründete er in Essen die Cybersecurity-Beratung carmasec – mit dem Anspruch, Informationssicherheit zu schaffen, die wirkt und nicht nur dokumentiert ist. Von Beginn an baute er das Unternehmen bewusst als resiliente, agile Organisation auf, die unabhängig von Einzelpersonen funktioniert.</p>
-    <p>Seit Anfang 2026 hat er die operative Führung von carmasec an die langjährige Geschäftsführung übergeben und begleitet das Unternehmen als strategisch eingebundener Gesellschafter und Markenbotschafter. Mit carmaVentures widmet er sich der strategischen Venture-Architektur und der Beratung rund um technologische Innovationen.</p>
+    <p>Carsten Marmulla blickt auf langjährige Erfahrung in Technologie- und Führungsrollen zurück. 2018 gründete er in Essen die Cybersecurity-Beratung carmasec (carmasec GmbH &amp; Co. KG) – mit dem Anspruch, Informationssicherheit zu schaffen, die wirkt und nicht nur dokumentiert ist. Unter seiner Führung wuchs das Unternehmen zu einer Institution für Cyber-Resilienz mit über 40 Expertinnen und Experten, die Kunden vom DAX-Konzern bis zum gehobenen Mittelstand begleiten.</p>
+    <p>Er bringt umfangreiche Erfahrung in der Absicherung industrieller Systeme und kritischer Infrastrukturen mit und verbindet traditionelle Kaufmannswerte mit innovativen Cybersecurity-Themen. Von Beginn an baute er carmasec bewusst als resiliente, agile Organisation auf, die unabhängig von Einzelpersonen funktioniert.</p>
+    <p>Seit Anfang 2026 hat er die operative Führung an die langjährige Geschäftsführung übergeben und begleitet das Unternehmen als strategisch eingebundener Gesellschafter und Markenbotschafter – mit Fokus auf strategische Weitsicht. Mit carmaVentures widmet er sich der strategischen Venture-Architektur und der Beratung rund um technologische Innovationen.</p>
   </section>
 
   <section>
     <h2>Schwerpunkte</h2>
     <ul class="focus-list">
       <li>Cybersecurity und Informationssicherheit – insbesondere Cyber Resilience und ISO&nbsp;27001</li>
+      <li>OT-Security – Absicherung industrieller Systeme und kritischer Infrastrukturen</li>
       <li>Strategische Unternehmensführung und Aufbau resilienter, agiler Organisationen</li>
       <li>Venture-Architektur und Advisory für technologische Innovationen</li>
       <li>Entrepreneurship – von der Gründung bis zur geordneten Übergabe</li>
@@ -238,9 +273,9 @@
       <li>
         <div class="when mono">seit 2026</div>
         <div class="what">
-          <h3>carmasec</h3>
+          <h3>carmasec GmbH &amp; Co. KG</h3>
           <p class="role">Strategischer Gesellschafter &amp; Markenbotschafter</p>
-          <p>Übergabe der operativen Gesamtverantwortung an die langjährige Geschäftsführung zum 01.01.2026; weiterhin strategisch eingebunden und als Markenbotschafter aktiv.</p>
+          <p>Übergabe der operativen Gesamtverantwortung an die langjährige Geschäftsführung zum 01.01.2026; weiterhin strategisch eingebunden, als Markenbotschafter aktiv und auf strategische Weitsicht fokussiert.</p>
         </div>
       </li>
       <li>
@@ -254,9 +289,9 @@
       <li>
         <div class="when mono">2018 – 2025</div>
         <div class="what">
-          <h3>carmasec</h3>
-          <p class="role">Gründer &amp; Geschäftsführer</p>
-          <p>Aufbau und Führung der Cybersecurity-Beratung in Essen („security. done. right.“) – von der Gründung bis zur etablierten, eigenständig funktionierenden Organisation.</p>
+          <h3>carmasec GmbH &amp; Co. KG</h3>
+          <p class="role">Gründer, Geschäftsführer &amp; Managing Partner</p>
+          <p>Aufbau und Führung der Cybersecurity-Beratung in Essen („security. done. right.“) – von der Gründung zur Institution für Cyber-Resilienz mit über 40 Expertinnen und Experten und Kunden vom DAX-Konzern bis zum gehobenen Mittelstand.</p>
         </div>
       </li>
       <li>
@@ -273,7 +308,8 @@
     <h2>Engagement &amp; Sichtbarkeit</h2>
     <ul class="focus-list">
       <li>Initiator des Cyber Circle Meetup</li>
-      <li>Gefragter Speaker und Moderator zu Cyber Resilience und ISO&nbsp;27001 – auf Branchenevents und digitalen Plattformen</li>
+      <li>Keynotes zu Cyber Resilience und Moderation von Panels zu OT-Security auf Branchenkonferenzen</li>
+      <li>Gefragter Speaker zu ISO&nbsp;27001 und Informationssicherheit – auf Branchenevents und digitalen Plattformen</li>
     </ul>
   </section>
 
